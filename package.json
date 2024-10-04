@@ -1,0 +1,13 @@
+{
+  "name": "cypress-express-mark",
+  "version": "1.0.0",
+  "description": "Projeto de testes de ponta a ponta no Mark L",
+  "main": "index.js",
+  "author": "Tiago Rafael Goes",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "12.2.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}
