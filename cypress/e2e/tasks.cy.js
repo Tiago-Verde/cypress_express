@@ -4,7 +4,7 @@ describe('tarefas', ()=> {
 
     context('Cadastro', ()=>{
 
-        it('deve cadastrar uma nova tarefa', ()=> {
+        it('deve cadastrar uma nova tarefa', ()=>{
 
             const taskName = 'Levar cachorro para passear'
     
@@ -41,7 +41,61 @@ describe('tarefas', ()=> {
     
         })
 
-    })    
+    }) 
+    
+    context('Atualização', ()=>{
+
+        it('deve concluir tarefa', ()=>{
+
+            const task = {
+                name: 'Estudar Cypress',
+                is_done: false
+            }
+
+            cy.removeTaskByName(task.name)
+            cy.postTask(task)
+
+            cy.visit('/')
+
+            cy.contains('p', task.name)
+                .parent()
+                .find('button[class*=ItemToggle]')
+                .click()
+
+            cy.contains('p', task.name)
+                .should('have.css', 'text-decoration-line', 'line-through')
+
+
+
+        })
+    })
+
+    context('Deleção', ()=>{
+
+        it('deve deletar tarefa', ()=>{
+
+            const task = {
+                name: 'Estudar C++',
+                is_done: false
+            }
+
+            cy.removeTaskByName(task.name)
+            cy.postTask(task)
+
+            cy.visit('/')
+
+            cy.contains('p', task.name)
+                .parent()
+                .find('button[class*=ItemDelete]')
+                .click()
+
+            cy.contains('p', task.name)
+                .should('not.exist')
+
+
+
+        })
+    })
 
 })  
 
